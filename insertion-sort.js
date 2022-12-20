@@ -19,7 +19,35 @@ function insertionSort(arr) {
   */
 
   // Your code here
-}
+  let newArr = arr.concat();
+  let sorted = [];
+  while(newArr.length > 0){
+    console.log(sorted.join(','));
+    let val = newArr.pop();
+    if(sorted.length == 0){
+      sorted.push(val);
+    }
+    else{
+      let i = sorted.length-1;
+      while(sorted[i] > val){
+        i--;
+      }
+      if(i == -1){
+        sorted.unshift(val);
+      }
+      else{
+        i++;
+        let temp = sorted[sorted.length-1];
+        for(let j = sorted.length-1; j >= i; j--){
+          sorted[j] = sorted[j-1];
+        }
+        sorted.push(temp);
+        sorted[i] = val;
+      }
+      }
+    }
+    return sorted;
+    }
 
 // In-place Insertion Sort
 // Mutates the original array
